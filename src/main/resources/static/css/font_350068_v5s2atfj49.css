@@ -1,0 +1,129 @@
+﻿@font-face {font-family: "zm";
+  src: url('../fonts/font_350068_v5s2atfj49.eot'); /* IE9 */
+  src: url('../fonts/font_350068_v5s2atfj49.eot') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/c789c2cb3aee45beaf9030d601f45abb.woff') format('woff2'),
+  url('../fonts/font_350068_v5s2atfj49.woff') format('woff'),
+  url('../fonts/font_350068_v5s2atfj49.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('../fonts/font_350068_v5s2atfj49.svg') format('svg'); /* iOS 4.1- */
+}
+
+.zm {
+  font-family: "zm" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.zm-fenlei_:before {
+  content: "\e67e";
+}
+
+.zm-yijianbaojia:before {
+  content: "\e606";
+}
+
+.zm-wordpress1:before {
+  content: "\e93f";
+}
+
+.zm-zm:before {
+  content: "\e605";
+}
+
+.zm-home:before {
+  content: "\e6b8";
+}
+
+.zm-socialwordpressoutline:before {
+  content: "\e92b";
+}
+
+.zm-shenfen:before {
+  content: "\e74d";
+}
+
+.zm-bangzhuzhongxin:before {
+  content: "\e78f";
+}
+
+.zm-WordPress:before {
+  content: "\e604";
+}
+
+.zm-icon1:before {
+  content: "\e60c";
+}
+
+.zm-shumaweixiu:before {
+  content: "\e62b";
+}
+
+.zm-zixun:before {
+  content: "\e619";
+}
+
+.zm-begin:before {
+  content: "\e603";
+}
+
+.zm-web:before {
+  content: "\e935";
+}
+
+.zm-bianji:before {
+  content: "\e62a";
+}
+
+.zm-HotNewspro:before {
+  content: "\e600";
+}
+
+.zm-ality:before {
+  content: "\e602";
+}
+
+.zm-adminplugins:before {
+  content: "\e611";
+}
+
+.zm-wordpress:before {
+  content: "\e6fb";
+}
+
+.zm-fenlei1:before {
+  content: "\e601";
+}
+
+.zm-gouwu:before {
+  content: "\e629";
+}
+
+.zm-fenlei:before {
+  content: "\e64";
+}
+
+.zm-ventilation:before {
+  content: "\e6ec";
+}
+
+.zm-androidgengduo:before {
+  content: "\e78d";
+}
+
+.zm-shouye:before {
+  content: "\e751";
+}
+
+.zm-computer:before {
+  content: "\e6eb";
+}
+
+.zm-localmall:before {
+  content: "\e791";
+}
+
+.zm-blogs:before {
+  content: "\e6";
+}
+
