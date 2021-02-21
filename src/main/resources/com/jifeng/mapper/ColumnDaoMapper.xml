@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jifeng.fitness.dao.ColumnDao">
+
+    <!--查询所有分栏-->
+    <select id="selectAll" resultType="Column">
+        select id,fitness.column.name,alias,ariticles from fitness.column
+    </select>
+
+    <!-- 根据分栏查询文章 -->
+    <select id="selectByColumn" parameterType="String" resultType="ArticleColumn">
+        SELECT id,title,author,publishDate,summary,watches
+        FROM article
+        WHERE article.column IN (SELECT id FROM fitness.column WHERE alias=#{alias})
+    </select>
+
+</mapper>
