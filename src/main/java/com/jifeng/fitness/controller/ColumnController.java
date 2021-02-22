@@ -22,15 +22,15 @@ public class ColumnController {
     private ColumnService columnService;
 
     @GetMapping("/{columnId}")
-    @ResponseBody
-    public String selectByColumn(@PathVariable("columnId") String alias) {
+    public String selectByColumn(@PathVariable("columnId") String alias,Model model) {
         System.out.println("~~~~~~~~~~ColumnId: " + alias);
         List<ArticleColumn> articles = columnService.selectByColumn(alias);
-        return articles.toString();
+        model.addAttribute("articles", articles);
+        model.addAttribute("columnname", alias);
+        return "column";
     }
 
     @GetMapping("/findAll")
-    @ResponseBody
     public String selectAll(Model model) {
         List<Column> columns = columnService.selectAll();
 //        model.addAttribute("columns", columns);
