@@ -9,12 +9,12 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ArticleColumn {
+public class Articles {
 
     private Integer id;
     private String title;
     private String author;
-    private Date publishDate;
+    private String publishDate;
     private String summary;
     private Integer watches;
 
@@ -42,11 +42,11 @@ public class ArticleColumn {
         this.author = author;
     }
 
-    public Date getPublishDate() {
+    public String getPublishDate() {
         return publishDate;
     }
 
-    public void setPublishDate(Date publishDate) {
+    public void setPublishDate(String publishDate) {
         this.publishDate = publishDate;
     }
 

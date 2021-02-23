@@ -13,5 +13,10 @@
         FROM article
         WHERE article.column IN (SELECT id FROM fitness.column WHERE alias=#{alias})
     </select>
+    
+    <!-- 根据分栏别称查询名称 -->
+    <select id="selectName" parameterType="String" resultType="String">
+        SELECT name FROM `column` WHERE alias=#{alias}
+    </select>
 
 </mapper>
