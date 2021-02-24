@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jifeng.fitness.dao.TagDao">
+
+    <!-- 根据标签查询文章 -->
+    <select id="selectByTag" resultType="ArticleColumn">
+        SELECT id,title,author,publishDate,summary,watches
+        FROM article
+        WHERE article.id IN 
+        <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+    
+    <!-- 根据别名查询标签 -->
+    <select id="selectTag" parameterType="String" resultType="Tag">
+        SELECT * FROM tag WHERE alias=#{alias}
+    </select>
+
+</mapper>
