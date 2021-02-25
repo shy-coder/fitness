@@ -23,7 +23,6 @@ public class TagController {
 
 
     @GetMapping("/{tagId}")
-    @ResponseBody
     public String selectByTag(@PathVariable("tagId") String alias, Model model) {
         Tag tag = tagService.selectTag(alias);
         String articles = tag.getArticles();
@@ -34,7 +33,8 @@ public class TagController {
             }
         }
         List<Articles> articlesList = tagService.selectByTag(idList);
-        return tag.getName() + "~~~~~~~" + "<br/>" + articlesList.toString();
+        model.addAttribute("articles", articlesList);
+        return "tag";
     }
 
 }
