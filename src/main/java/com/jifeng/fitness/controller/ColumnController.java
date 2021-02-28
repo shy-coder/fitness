@@ -25,7 +25,6 @@ public class ColumnController {
         model.addAttribute("articles", articles);
         String name = columnService.selectName(alias);
         model.addAttribute("columnname", name);
-        System.out.println("~~~~~~~~~~~" + name);
         return "column";
     }
 

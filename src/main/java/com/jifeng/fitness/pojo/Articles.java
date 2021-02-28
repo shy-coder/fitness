@@ -17,6 +17,7 @@ public class Articles {
     private String publishDate;
     private String summary;
     private Integer watches;
+    private String columnName;
 
     public Integer getId() {
         return id;
@@ -64,5 +65,13 @@ public class Articles {
 
     public void setWatches(Integer watches) {
         this.watches = watches;
+    }
+
+    public String getColumnName() {
+        return columnName;
+    }
+
+    public void setColumnName(String columnName) {
+        this.columnName = columnName;
     }
 }

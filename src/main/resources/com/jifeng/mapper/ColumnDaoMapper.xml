@@ -8,7 +8,7 @@
     </select>
 
     <!-- 根据分栏查询文章 -->
-    <select id="selectByColumn" parameterType="String" resultType="ArticleColumn">
+    <select id="selectByColumn" parameterType="String" resultType="Article">
         SELECT id,title,author,publishDate,summary,watches
         FROM article
         WHERE article.column IN (SELECT id FROM fitness.column WHERE alias=#{alias})

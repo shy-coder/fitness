@@ -21,5 +21,24 @@ public class Article {
     private String summary;
     private Integer watches;
     private String tags;
-    private Integer column;
+    private String columnName;
+
+    public Article(Integer id, String title, String author, Date publishDate, String summary, Integer watches, String columnName) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.publishDate = publishDate;
+        this.summary = summary;
+        this.watches = watches;
+        this.columnName = columnName;
+    }
+
+    public Article(Integer id, String title, String author, Date publishDate, String summary, Integer watches) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.publishDate = publishDate;
+        this.summary = summary;
+        this.watches = watches;
+    }
 }

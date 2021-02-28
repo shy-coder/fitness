@@ -2,14 +2,31 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.jifeng.fitness.dao.TagDao">
 
+    <resultMap id="ArticleMap" type="Article">
+        <result column="a_id" property="id"/>
+        <result column="a_title" property="title"/>
+        <result column="a_author" property="author"/>
+        <result column="a_publishDate" property="publishDate"/>
+        <result column="a_summary" property="summary"/>
+        <result column="a_watches" property="watches"/>
+        <result column="name" property="columnName"/>
+    </resultMap>
+    
     <!-- 根据标签查询文章 -->
-    <select id="selectByTag" resultType="ArticleColumn">
-        SELECT id,title,author,publishDate,summary,watches
-        FROM article
-        WHERE article.id IN 
-        <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
-            #{item}
-        </foreach>
+    <select id="selectByTag" resultMap="ArticleMap">
+        SELECT
+            A.a_id, A.a_title, A.a_author, A.a_publishDate, A.a_summary, A.a_watches, B.name
+        FROM
+            (
+            SELECT id AS a_id, title AS a_title, author as a_author, publishDate as a_publishDate, summary as a_summary, watches as a_watches, article.column AS a_column
+            FROM article
+            WHERE article.id IN
+                <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+                    #{item}
+                </foreach>
+            ) AS A
+        INNER JOIN fitness.column AS B
+        ON A.a_column = B.id
     </select>
     
     <!-- 根据别名查询标签 -->

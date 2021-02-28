@@ -1,7 +1,7 @@
 package com.jifeng.fitness.service.Impl;
 
 import com.jifeng.fitness.dao.TagDao;
-import com.jifeng.fitness.pojo.ArticleColumn;
+import com.jifeng.fitness.pojo.Article;
 import com.jifeng.fitness.pojo.Articles;
 import com.jifeng.fitness.pojo.Tag;
 import com.jifeng.fitness.service.TagService;
@@ -25,7 +25,7 @@ public class TagServiceImpl implements TagService {
     public List<Articles> selectByTag(List<Character> ids) {
         DateFormat df = new SimpleDateFormat("yyyy年MM月dd日 hh点mm分ss秒");
         List<Articles> list = new ArrayList<>();
-        List<ArticleColumn> articleList = tagDao.selectByTag(ids);
+        List<Article> articleList = tagDao.selectByTag(ids);
         for (int i = 0; i < articleList.size(); i++) {
             Articles articles = new Articles();
             articles.setId(articleList.get(i).getId());
@@ -34,6 +34,7 @@ public class TagServiceImpl implements TagService {
             articles.setPublishDate(df.format(articleList.get(i).getPublishDate()));
             articles.setSummary(articleList.get(i).getSummary());
             articles.setWatches(articleList.get(i).getWatches());
+            articles.setColumnName(articleList.get(i).getColumnName());
             list.add(articles);
         }
         return list;
