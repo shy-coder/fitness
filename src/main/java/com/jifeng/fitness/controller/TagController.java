@@ -31,7 +31,12 @@ public class TagController {
             }
         }
         List<Articles> articlesList = tagService.selectByTag(idList);
+        String tagname = tag.getName();
         model.addAttribute("articles", articlesList);
+        model.addAttribute("tagName",tagname);
+        System.out.println(tagname);
+
+
         return "tag";
     }
 
