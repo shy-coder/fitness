@@ -11,4 +11,6 @@ public interface TagDao {
 
     Tag selectTag(String alias);
 
+    List<String> selectByIds(List<Character> ids);
+
 }

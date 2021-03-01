@@ -44,4 +44,9 @@ public class TagServiceImpl implements TagService {
     public Tag selectTag(String alias) {
         return tagDao.selectTag(alias);
     }
+
+    @Override
+    public List<String> selectByIds(List<Character> ids) {
+        return tagDao.selectByIds(ids);
+    }
 }

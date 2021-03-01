@@ -34,4 +34,13 @@
         SELECT * FROM tag WHERE alias=#{alias}
     </select>
 
+    <!-- 根据多个Tag的id查询Tag的名称 -->
+    <select id="selectByIds" resultType="String">
+        SELECT name FROM tag
+        WHERE id IN
+            <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+                #{item}
+            </foreach>
+    </select>
+
 </mapper>

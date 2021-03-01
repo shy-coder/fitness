@@ -11,4 +11,6 @@ public interface TagService {
 
     Tag selectTag(String alias);
 
+    List<String> selectByIds(List<Character> ids);
+
 }

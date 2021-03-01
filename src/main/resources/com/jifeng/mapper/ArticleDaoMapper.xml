@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jifeng.fitness.dao.ArticleDao">
+
+    <!--查询所有分栏-->
+    <select id="selectById" resultType="Article">
+        SELECT A.id,A.title,A.author,A.publishDate,A.lastupDate,A.text,A.summary,A.watches,A.tags,B.name AS columnName
+        FROM article AS A
+        INNER JOIN fitness.column AS B
+        ON A.column = B.id
+        WHERE A.id = #{id}
+    </select>
+
+</mapper>

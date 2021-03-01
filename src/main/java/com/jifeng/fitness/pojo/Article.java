@@ -41,4 +41,6 @@ public class Article {
         this.summary = summary;
         this.watches = watches;
     }
+
+
 }
