@@ -13,4 +13,8 @@ public interface ColumnDao {
 
     String selectName(String alias);
 
+    List<Article> selectArticleByWatches(String columnId);
+
+    Column selectByAlias(String alias);
+
 }

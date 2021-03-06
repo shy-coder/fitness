@@ -19,4 +19,18 @@
         SELECT name FROM `column` WHERE alias=#{alias}
     </select>
 
+    <!-- 根据分栏id获取此分栏最热前2篇文章 -->
+    <select id="selectArticleByWatches" parameterType="String" resultType="Article">
+        SELECT id,title,author,publishDate,summary,watches
+        FROM article
+        WHERE article.column = #{columnId}
+        ORDER BY watches DESC
+        LIMIT 0,2
+    </select>
+
+    <!-- 根据别名查询column -->
+    <select id="selectByAlias" resultType="Column">
+        SELECT id,name,alias,ariticles FROM fitness.column WHERE alias=#{alias}
+    </select>
+
 </mapper>

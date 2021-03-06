@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -34,5 +35,13 @@ public class ColumnController {
 //        model.addAttribute("columns", columns);
 //        return "/column";
         return columns.toString();
+    }
+
+    @GetMapping("/hot/{alias}")
+    @ResponseBody
+    public String selectHot(@PathVariable("alias") String alias) {
+        Column column = columnService.selectByAlias(alias);
+        List<Articles> articleList = columnService.selectArticleByWatches(column.getId()+"");
+        return "分栏名：" + column.getName() + "hot2:" + articleList.toString();
     }
 }

@@ -16,7 +16,6 @@ import java.util.List;
 @Service
 public class ColumnServiceImpl implements ColumnService {
 
-
     @Autowired
     private ColumnDao columnDao;
 
@@ -46,6 +45,29 @@ public class ColumnServiceImpl implements ColumnService {
     @Override
     public String selectName(String alias) {
         return columnDao.selectName(alias);
+    }
+
+    @Override
+    public List<Articles> selectArticleByWatches(String columnId) {
+        DateFormat df = new SimpleDateFormat("yyyy年MM月dd日");
+        List<Articles> list = new ArrayList<>();
+        List<Article> articleList = columnDao.selectArticleByWatches(columnId);
+        for (int i = 0; i < articleList.size(); i++) {
+            Articles articles = new Articles();
+            articles.setId(articleList.get(i).getId());
+            articles.setTitle(articleList.get(i).getTitle());
+            articles.setAuthor(articleList.get(i).getAuthor());
+            articles.setPublishDate(df.format(articleList.get(i).getPublishDate()));
+            articles.setSummary(articleList.get(i).getSummary());
+            articles.setWatches(articleList.get(i).getWatches());
+            list.add(articles);
+        }
+        return list;
+    }
+
+    @Override
+    public Column selectByAlias(String alias) {
+        return columnDao.selectByAlias(alias);
     }
 
 }

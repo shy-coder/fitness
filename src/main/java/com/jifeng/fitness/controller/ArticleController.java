@@ -27,19 +27,21 @@ public class ArticleController {
     public String selectById(@PathVariable("articleId") String id, Model model) {
         Articles article = articleService.selectById(id);
         String tags = article.getTags();
-        List<Character> idList = new ArrayList<>();
-        for (int i=0; i<tags.length(); i++) {
-            if (tags.charAt(i) >= 48 && tags.charAt(i) <= 57) {
-                idList.add(tags.charAt(i));
+        if (tags != null) {
+            System.out.println("待解析的id" + tags);
+            List<Character> idList = new ArrayList<>();
+            for (int i=0; i<tags.length(); i++) {
+                if (tags.charAt(i) >= 48 && tags.charAt(i) <= 57) {
+                    idList.add(tags.charAt(i));
+                }
             }
+            System.out.println("要查询的标签id：" + idList.toString());
+            List<String> tagNames = tagService.selectByIds(idList);
+            model.addAttribute("tagNames", tagNames);
+            System.out.println("标签"+tagNames);
         }
-        System.out.println("要查询的标签id：" + idList.toString());
-        List<String> tagNames = tagService.selectByIds(idList);
         model.addAttribute("article", article);
-        model.addAttribute("tagNames", tagNames);
-        System.out.println("标签"+tagNames);
         return "article";
-
 //        return "文章：" + article.toString() + "~~~~~~~~~~~~~~~~ 文章的标签们：" + tagNames.toString();
     }
 

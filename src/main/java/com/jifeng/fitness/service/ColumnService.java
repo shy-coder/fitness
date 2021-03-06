@@ -13,4 +13,8 @@ public interface ColumnService {
 
     String selectName(String alias);
 
+    List<Articles> selectArticleByWatches(String columnId);
+
+    Column selectByAlias(String alias);
+
 }
