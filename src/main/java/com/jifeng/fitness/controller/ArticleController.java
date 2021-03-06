@@ -5,6 +5,7 @@ import com.jifeng.fitness.service.ArticleService;
 import com.jifeng.fitness.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,8 +24,7 @@ public class ArticleController {
     private TagService tagService;
 
     @GetMapping("/{articleId}")
-    @ResponseBody
-    public String selectById(@PathVariable("articleId") String id) {
+    public String selectById(@PathVariable("articleId") String id, Model model) {
         Articles article = articleService.selectById(id);
         String tags = article.getTags();
         List<Character> idList = new ArrayList<>();
@@ -35,7 +35,12 @@ public class ArticleController {
         }
         System.out.println("要查询的标签id：" + idList.toString());
         List<String> tagNames = tagService.selectByIds(idList);
-        return "文章：" + article.toString() + "~~~~~~~~~~~~~~~~ 文章的标签们：" + tagNames.toString();
+        model.addAttribute("article", article);
+        model.addAttribute("tagNames", tagNames);
+        System.out.println("标签"+tagNames);
+        return "article";
+
+//        return "文章：" + article.toString() + "~~~~~~~~~~~~~~~~ 文章的标签们：" + tagNames.toString();
     }
 
 }
