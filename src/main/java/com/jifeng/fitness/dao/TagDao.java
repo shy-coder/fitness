@@ -13,4 +13,6 @@ public interface TagDao {
 
     List<String> selectByIds(List<Character> ids);
 
+    List<Article> selectArticleByWatches(List<Character> ids);
+
 }

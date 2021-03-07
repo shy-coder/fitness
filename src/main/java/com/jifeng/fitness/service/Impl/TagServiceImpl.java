@@ -49,4 +49,23 @@ public class TagServiceImpl implements TagService {
     public List<String> selectByIds(List<Character> ids) {
         return tagDao.selectByIds(ids);
     }
+
+    @Override
+    public List<Articles> selectArticleByWatches(List<Character> ids) {
+        DateFormat df = new SimpleDateFormat("yyyy年MM月dd日");
+        List<Articles> list = new ArrayList<>();
+        List<Article> articleList = tagDao.selectArticleByWatches(ids);
+        for (int i = 0; i < articleList.size(); i++) {
+            Articles articles = new Articles();
+            articles.setId(articleList.get(i).getId());
+            articles.setTitle(articleList.get(i).getTitle());
+            articles.setAuthor(articleList.get(i).getAuthor());
+            articles.setPublishDate(df.format(articleList.get(i).getPublishDate()));
+            articles.setSummary(articleList.get(i).getSummary());
+            articles.setWatches(articleList.get(i).getWatches());
+            articles.setColumnName(articleList.get(i).getColumnName());
+            list.add(articles);
+        }
+        return list;
+    }
 }

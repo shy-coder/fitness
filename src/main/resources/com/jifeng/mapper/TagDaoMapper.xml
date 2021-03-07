@@ -36,11 +36,24 @@
 
     <!-- 根据多个Tag的id查询Tag的名称 -->
     <select id="selectByIds" resultType="String">
-        SELECT name FROM tag
+        SELECT name
+        FROM tag
         WHERE id IN
             <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
                 #{item}
             </foreach>
+    </select>
+
+    <!-- 根据标签id获取此分栏最热前2篇文章 -->
+    <select id="selectArticleByWatches" resultType="Article">
+        SELECT id,title,author,publishDate,summary,watches
+        FROM article
+        WHERE id IN
+            <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+                #{item}
+            </foreach>
+        ORDER BY watches DESC
+        LIMIT 0,2
     </select>
 
 </mapper>

@@ -13,4 +13,6 @@ public interface TagService {
 
     List<String> selectByIds(List<Character> ids);
 
+    List<Articles> selectArticleByWatches(List<Character> ids);
+
 }
